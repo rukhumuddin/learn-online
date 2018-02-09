@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" class="font-primary">
+<head>
+<!-- Title -->
+<title>nmci</title>
+<!-- Required Meta Tags Always Come First -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Favicon -->
+<!-- <link rel="shortcut icon" href="../../favicon.ico"> -->
+<!-- Google Fonts -->
+<!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700%7Csubset=cyrillic,latin" rel="stylesheet" type="text/css"> -->
+<!-- CSS Global Compulsory -->
+<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+<!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css">
+<link rel="stylesheet" href="assets/vendor/icon-hs/style.css">
+<link rel="stylesheet" href="assets/vendor/animate.css">
+<link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css">
+<link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="assets/vendor/hs-megamenu/src/hs.megamenu.css">
+<link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
+<!-- Revolution Slider -->
+<link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+<!-- CSS Unify -->
+<link rel="stylesheet" href="assets/css/unify.css">
+<!-- CSS Customization -->
+<link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+<main>
+<div id="header"></div>
+<div id="content-area">
+<!-- Promo Block -->
+<section class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall " data-options='{direction: "fromtop", animation_duration: 25, direction: "reverse"}'>
+  <!-- Parallax Image -->
+  <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-black-opacity-0_3--after" style="height: 140%; background-image: url(http://navcomelectronics.eu/NMCIS/assets/img/coursedetiasinformation.jpg);"></div>
+  <!-- End Parallax Image -->
+  <!-- Promo Block Content -->
+  <div class="container g-color-white text-left g-py-120">
+    <div class="col-lg-12 col-md-12">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <h3 class="h1 g-font-weight-600 text-uppercase mb-2">An Introduction to LNG</h3>
+          <p class="g-font-weight-300 g-font-size-22 text-uppercase">GAC Training & Service Solutions has developed this bespoke two day Liquefied Natural Gas Training course to give a structured introduction to LNG.</p>
+          <!--          <p>Click on the individual course categories below for upcoming dates or <a href="contentfiles/Commercial Calendar 2017/NMCI Timetables 2017_ALL PAGES_HP (Upload Version).pdf">why not view/ download our 2017 Calendar.&nbsp; </a></p>-->
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="wrap">
+            <!--<div class="search">
+              <input type="text" class="searchTerm" placeholder="What are you looking for?">
+              <button type="submit" class="searchButton"> <i class="fa fa-search"></i> </button>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Promo Block Content -->
+</section>
+<!-- End Promo Block -->
+<!-- container -->
+<section>
+  <div class="container ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 course-details">
+      <div class="row" id="course-details">
+        <!-- left sidebar menu -->
+        <div class="col-lg-4 col-md-4 col-sm-12 side-menu">
+          <div class="nav-side-menu">
+            <div class="brand">Courses</div>
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            <div class="menu-list">
+              <ul id="menu-content" class="menu-content collapse out">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--End left sidebar menu -->
+        <!-- Right side content -->
+        <div class="col-lg-8 col-md-8 col-sm-12 row course-information-page" id="course-data">
+          <div class=" col-lg-6 LNG-containt courseIntroCon" >
+
+          </div>
+          <div class=" col-lg-6 " >
+            <div class="LNG-pdf-downlod">
+              <h3>Download PDF</h3>
+              <div class="download-PDF"><a href="#"><img src="http://navcomelectronics.eu/NMCIS/assets/img/pdf-download.png"><span>Download Course As PDF</span></a></div>
+              <div class="download-brochure"><a href="#"><img src="http://navcomelectronics.eu/NMCIS/assets/img/pdf-download.png"><span>Download Course Brochure</span></a></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-lg-12 course-full-description">
+
+          </div>
+          <div class="col-lg-12">
+            <h3>Course availability and booking</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Places</th>
+                  <th>Fee</th>
+                  <th>Book</th>
+                </tr>
+              </thead>
+              <tbody id="schedules-data">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- End Right side content -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="enquirypopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Course Enquiry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" name="fullname" placeholder="Fullname">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email ID">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" placeholder="Message"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End container -->
+<!-- Footer -->
+<div id="footer"></div>
+</main>
+<!-- JS Global Compulsory -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/tether.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script src="assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+<script src="assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+<script src="assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="assets/vendor/appear.js"></script>
+<!-- JS Revolution Slider -->
+<!--<script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>-->
+<!-- JS Unify -->
+<script src="assets/js/hs.core.js"></script>
+<script src="assets/js/components/hs.header.js"></script>
+<script src="assets/js/helpers/hs.hamburgers.js"></script>
+<script src="assets/js/components/hs.tabs.js"></script>
+<script src="assets/js/components/hs.popup.js"></script>
+<script src="assets/js/components/hs.carousel.js"></script>
+<script src="assets/js/components/hs.counter.js"></script>
+<script src="assets/js/components/hs.cubeportfolio.js"></script>
+<!-- JS Customization -->
+<script src="assets/js/layout.js"></script>
+<!-- API requests -->
+<script src="assets/js/api.js"></script>
+<script src="assets/js/jquery.cookie.js"></script>
+<!-- JS Plugins Init. -->
+<script>
+      (function ($) {
+        'use strict';
+        $(document).on('ready', function () {
+          // Header
+          $.HSCore.components.HSHeader.init($('#js-header'));
+          $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+          // Initialization of HSMegaMenu plugin
+          $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 991
+          });
+          $.HSCore.components.HSTabs.init('[data-tabs-mobile-type]');
+
+          $('[data-toggle="tooltip"]').tooltip();
+
+          $.HSCore.components.HSPopup.init('.js-fancybox');
+
+          // initialization of counters
+          var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+          // initialization of carousel
+          $.HSCore.components.HSCarousel.init('.js-carousel');
+
+          $.HSCore.components.HSCubeportfolio.init('.cbp');
+        });
+      })(jQuery);
+    </script>
+<!-- scrollToTop JS Plugins Init. -->
+
+<script>
+$(document).ready(function(){
+
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+
+  courseDetails();
+
+  $(function () {
+    $('body').on('click', 'a.book-course', function() {
+        var course;
+        var scheduleId = cprice = qty = cdesc = "";
+        scheduleId = $(".course-dated").data("dated");
+        cprice = $(".course-price").data("price");
+        var price = cprice.replace(/[^\d\.]/g, '');
+        cdesc = $(".cdesc").data("cdesc");
+        course = {
+            "scheduleId": scheduleId,
+            "price": price,
+            "cdesc": cdesc
+        };
+
+        insertCookieData(course);
+        cartData();
+        window.location.href='cart.html';
+    });
+
+    //Multi dimensional array
+    var courses = [];
+    //console.log(courses);
+    //inserting
+    var course = {"scheduleId": "", "price": "", "cdesc": ""};
+    courses.push(course);
+    // insertCookieData(course);
+    //delete
+    var newArray = [];
+    $.each(courses, function (key, value) {
+        if (value.scheduleId !== "2")
+            newArray.push(value);
+    });
+  // console.log(newArray);
+  });
+
+  function cartData()
+  {
+    console.log("in cart");
+  //                cartdata
+    var addCoureses = "";
+    if (typeof $.cookie('cart') !== 'undefined') {
+        addCoureses = getCookieData();
+    }
+
+  }
+  /**
+  * Removes the cookie data
+  * @param {type} data
+  * @returns {undefined}
+  */
+  function removeCookieData(data)
+  {
+    var addCoureses = "";
+    if (typeof $.cookie('cart') !== 'undefined') {
+        addCoureses = getCookieData();
+    }
+    var newArray = [];
+    $.each(addCoureses, function (key, value) {
+        if (value.scheduleId !== data.scheduleId)
+            newArray.push(value);
+    });
+    var modifiedData = JSON.stringify(newArray);
+    $.cookie("cart", modifiedData);
+  }
+  function insertCookieData(data) {
+    console.log("insert function");
+  //                 console.log(getCookieData());
+    if (typeof $.cookie('cart') === 'undefined') {
+        //no cookie
+        var modifiedData = JSON.stringify([data]);
+        $.cookie("cart", modifiedData);
+    } else if (checkData(data)) {
+        console.log(getCookieData());
+        var olddata = getCookieData();
+        olddata.push(data);
+        var modifiedData = JSON.stringify(olddata);
+        $.cookie("cart", modifiedData);
+    } else {
+        console.log(getCookieData());
+        console.log("data already exist");
+    }
+
+}
+
+/**
+* Brings the all cart cooke data in a array
+* @type Array|Object
+*/
+function getCookieData() {
+  //    var back2orig = JSON.parse($.cookie('data'));
+  var back2orig = JSON.parse($.cookie('cart'));
+  return back2orig;
+}
+
+/**
+* Check the given object exist in cookie or not
+* if not exist returns true othere wise return false
+* checks with (scheduleId property)
+* @param {type} course
+* @returns {Boolean}
+*/
+function checkData(course)
+{
+  var addCoureses = "";
+  var status = true;
+  if (typeof $.cookie('cart') !== 'undefined') {
+      addCoureses = getCookieData();
+  }
+
+  $.each(addCoureses, function (key, value) {
+
+      if (value.scheduleId === course.scheduleId) {
+          status = false;
+      }
+
+  });
+  return status;
+}
+
+});
+</script>
+</body>
+</html>
