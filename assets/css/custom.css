@@ -4,7 +4,7 @@
 
 /* cart styles */
 #course-cart{
-  margin: 25px 0 25px 30px;
+  margin: 0 0 25px 30px;
 }
 .product-image {
   float: left;
@@ -14,12 +14,12 @@
 
 .product-details {
   float: left;
-  width: 37%;
+  width: 39%;
 }
 
 .product-price {
   float: left;
-  width: 12%;
+  width: 11%;
 }
 
 .product-quantity {
@@ -29,7 +29,7 @@
 
 .product-removal {
   float: left;
-  width: 9%;
+  width: 8%;
 }
 
 .product-line-price {
@@ -216,7 +216,93 @@
     width: 40%;
   }
 }
+#menu-content li{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.h5title{
+  font-size: 1.2rem !important;
+}
 
-.emptyData{
-  
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  *zoom: 1;
+}
+#course-cart .wrap {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3% 0 5% 0;
+}
+.cart-heading {
+  padding: 0.8em 0;
+  border-bottom: 1px solid #D0D0D0;
+}
+.cart-heading h1 {
+  font-size: 1.8em;
+  font-weight: 600;
+  float: left;
+}
+.cart-heading a.continue:link, .cart-heading a.continue:visited {
+  text-decoration: none;
+  letter-spacing: -.015em;
+  font-size: .75em;
+  padding: 1em;
+  color: #fff;
+  background: #82ca9c;
+  font-weight: bold;
+  border-radius: 50px;
+  float: right;
+  text-align: right;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -ms-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.cart-heading a.continue:after {
+  content: "\276f";
+  padding: .5em;
+  position: relative;
+  right: 0;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+.cart-heading a.continue:hover, .cart-heading a.continue:focus, .cart-heading a.continue:active {
+  background: #f69679;
+}
+.cart-heading a.continue:hover:after, .cart-heading a.continue:focus:after, .cart-heading a.continue:active:after {
+  right: -10px;
+}
+.cart-heading h1{
+  color: #424242;
+}
+#empty-cart h3.emptyheading{
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.ellipsesText{
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  height: 60px;
+  /* Fallback for non-webkit */
+  margin: 0 auto;
+  line-height: 1.4;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

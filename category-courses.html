@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="font-primary">
+<head>
+<!-- Title -->
+<title>nmci</title>
+<!-- Required Meta Tags Always Come First -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Favicon -->
+<!-- <link rel="shortcut icon" href="../../favicon.ico"> -->
+<!-- Google Fonts -->
+<!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700%7Csubset=cyrillic,latin" rel="stylesheet" type="text/css"> -->
+<!-- CSS Global Compulsory -->
+<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+<!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css">
+<link rel="stylesheet" href="assets/vendor/icon-hs/style.css">
+<link rel="stylesheet" href="assets/vendor/animate.css">
+<link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css">
+<link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="assets/vendor/hs-megamenu/src/hs.megamenu.css">
+<link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
+<!-- Revolution Slider -->
+<link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+<!-- CSS Unify -->
+<link rel="stylesheet" href="assets/css/unify.css">
+<!-- CSS Customization -->
+<link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+<main>
+<div id="header"></div>
+<div id="content-area">
+<!-- Promo Block -->
+<section class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall " data-options='{direction: "fromtop", animation_duration: 25, direction: "reverse"}'>
+  <!-- Parallax Image -->
+  <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-black-opacity-0_3--after" style="height: 140%; background-image: url(assets/img/petrol.jpg);"></div>
+  <!-- End Parallax Image -->
+  <!-- Promo Block Content -->
+  <div class="container g-color-white text-left g-py-120">
+    <div class="col-lg-12 col-md-12">
+      <div class="row">
+        <div class="col-lg-6 col-md-6" id="cc-image-slider">
+
+
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="wrap">
+            <!--<div class="search">
+              <input type="text" class="searchTerm" placeholder="What are you looking for?">
+              <button type="submit" class="searchButton"> <i class="fa fa-search"></i> </button>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Promo Block Content -->
+</section>
+<!-- End Promo Block -->
+<!-- container -->
+<section>
+  <div class="container ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 course-details">
+      <div class="row">
+        <div class="layout-contant">
+          <div id="layout-contant"></div>
+          <p>GTSS combines the NMCI’s state-of-the-art facilities (including a 35 bridge simulator suite and survival pool) with GAC’s global reach and 60 years of shipping experience. Courses can take place at the NMCI or at the client’s location.</p>
+          <p>Courses are developed and delivered by some of the most respected names in maritime training</p>
+        </div>
+        <div class="col-lg-12 inner-coruse-list">
+          <!-- News Block -->
+          <section class="g-bg-gray-light-v5 Petrochemical-coruse-list">
+            <div class="row" id="courses-layout">
+              <!-- Article -->
+
+              <!-- End Article -->
+            </div>
+          </section>
+          <!-- End News Block -->
+          <!-- End News Block -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<!-- Footer -->
+<div id="footer"></div>
+</main>
+<!-- JS Global Compulsory -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/tether.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script src="assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+<script src="assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+<script src="assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="assets/vendor/appear.js"></script>
+<!-- JS Revolution Slider -->
+<!--<script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>-->
+<!-- JS Unify -->
+<script src="assets/js/hs.core.js"></script>
+<script src="assets/js/components/hs.header.js"></script>
+<script src="assets/js/helpers/hs.hamburgers.js"></script>
+<script src="assets/js/components/hs.tabs.js"></script>
+<script src="assets/js/components/hs.popup.js"></script>
+<script src="assets/js/components/hs.carousel.js"></script>
+<script src="assets/js/components/hs.counter.js"></script>
+<script src="assets/js/components/hs.cubeportfolio.js"></script>
+<!-- JS Customization -->
+<script src="assets/js/layout.js"></script>
+<!-- API requests -->
+<script src="assets/js/api.js"></script>
+<!-- JS Plugins Init. -->
+<script>
+      (function ($) {
+        'use strict';
+        $(document).on('ready', function () {
+          // Header
+          $.HSCore.components.HSHeader.init($('#js-header'));
+          $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+          // Initialization of HSMegaMenu plugin
+          $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 991
+          });
+          $.HSCore.components.HSTabs.init('[data-tabs-mobile-type]');
+
+          $('[data-toggle="tooltip"]').tooltip();
+
+          $.HSCore.components.HSPopup.init('.js-fancybox');
+
+          // initialization of counters
+          var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+          // initialization of carousel
+          $.HSCore.components.HSCarousel.init('.js-carousel');
+
+          $.HSCore.components.HSCubeportfolio.init('.cbp');
+        });
+      })(jQuery);
+    </script>
+<!--  scrollToTop JS Plugins Init. -->
+
+<script>
+$(document).ready(function(){
+
+  categortyCourses();
+
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+
+  comCourses();
+
+});
+</script>
+<script>
+</body>
+</html>

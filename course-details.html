@@ -241,15 +241,24 @@ $(document).ready(function(){
   $(function () {
     $('body').on('click', 'a.book-course', function() {
         var course;
-        var scheduleId = cprice = qty = cdesc = "";
-        scheduleId = $(".course-dated").data("dated");
-        cprice = $(".course-price").data("price");
-        var price = cprice.replace(/[^\d\.]/g, '');
+        var scheduleId = scheduleDated = price = cprice = qty = cdesc = tr = cid = csname = "" ;
+        tr = $(this).closest('tr');
+        scheduleId = tr.find('.course-dated').data("dated");
+        scheduleDated = tr.find('.course-dated').text();
+        price = tr.find('.course-price').text();
+        cprice = price.replace(/[^\d\.]/g, '');
+        csname = $("p.course-name").data("csname");
+        cid = $("p.course-name").data("courseid");
         cdesc = $(".cdesc").data("cdesc");
+        //alert('scheduleId: '+scheduleId+', cprice: ' + cprice+', cdesc: ' + cdesc+', csname: ' + csname+', cid: ' + cid);
+
         course = {
             "scheduleId": scheduleId,
-            "price": price,
-            "cdesc": cdesc
+            "scheduleDated": scheduleDated,
+            "cprice": cprice,
+            "cdesc": cdesc,
+            "cid": cid,
+            "csname": csname
         };
 
         insertCookieData(course);

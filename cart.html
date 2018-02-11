@@ -38,39 +38,26 @@
   <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="row" id="course-cart">
-        <h3 style="margin-top:20px;">ITEMS IN CART</h3>
-          <div class="shopping-cart"  style="height:100vh;">
-            <div class="column-labels">
-              <label class="product-image">Image</label>
-              <label class="product-details">Product</label>
-              <label class="product-price">Price</label>
-              <label class="product-quantity">Quantity</label>
-              <label class="product-removal">Remove</label>
-              <label class="product-line-price">Total</label>
+          <div class="wrap cf">
+            <div class="cart-heading cf">
+              <h1>My Cart</h1>
+              <a href="#" class="continue">Continue Shopping</a>
+            </div>
+          </div>
+          <div class="shopping-cart"  style="min-height:100vh;">
+            <div class="column-labels" id="column-labels">
+
             </div>
 
             <div id="bookedCourses">
 
             </div>
 
-            <div class="totals">
-              <div class="totals-item">
-                <label>Subtotal</label>
-                <div class="totals-value csprice" id="cart-subtotal"></div>
-              </div>
-              <div class="totals-item">
-                <label>Tax (0%)</label>
-                <div class="totals-value" id="cart-tax">0.00</div>
-              </div>
-              <div class="totals-item">
-                <label>Shipping</label>
-                <div class="totals-value" id="cart-shipping">0.00</div>
-              </div>
-              <div class="totals-item totals-item-total">
-                <label>Grand Total</label>
-                <div class="totals-value csprice" id="cart-total"></div>
-              </div>
-              <button class="checkout">Checkout</button>
+            <div class="totals" id="totalBilling">
+
+            </div>
+            <div id="empty-cart">
+              <h3 class="emptyheading">Your cart is empty</h3>
             </div>
           </div>
       </div>
@@ -147,45 +134,64 @@
 <script>
 $(document).ready(function(){
     cartData();
-    var htmlText = '';
-    //$('.emptyData').hide();
+
     function cartData(){
         //cartdata
         var addCoureses = "";
+		    var cartItems = '';
+        var menuItems = '';
+        var billing = '';
+
         if (!!$.cookie('cart')) {
             addCoureses = getCookieData();
+            $("#empty-cart").hide();
+
+            $.each(addCoureses, function (key, value) {
+                console.log("<li>course name:" + value.csname + " Id:" + value.scheduleDated + " price:" + value.price + " description:" + value.cdesc +"</li>");
+                //var price = "<span>" + value.price + "</span>";
+                //$('.csprice').append(price);
+                cartItems += '<div class="product">'
+                            +'<div class="product-image">'
+                            	+'<img class="w-100" src="assets/img/1.jpg" alt="Image Description">'
+                            + '</div>'
+                            + '<div class="product-details">'
+                            	+'<div class="product-title">'
+                                +'<p style="margin-bottom: 0;" data-cid="'+ value.cid +'">'+ value.csname +'</p>'
+                                +'<p data-scheduleId="'+ value.scheduleId +'" >'+ value.scheduleDated +'</p>'
+                              +'</div>'
+                            	+ '<p class="product-description" style="font-size:12px;"></p>'
+                            + '</div>'
+                            + '<div class="product-price">' + value.cprice + '</div>'
+                            + '<div class="product-quantity">'
+                            	+ '<input type="number" value="1" min="1">'
+                            + '</div>'
+                            + '<div class="product-removal">'
+                            	+ '<button class="remove-product" id="remove-product">Remove</button>'
+                            + '</div>'
+                            + '<div class="product-line-price product-cost">' + value.cprice + '</div>'
+                            + '</div>';
+
+            });
+
+            menuItems += '<label class="product-image">Image</label>'
+                        +'<label class="product-details">Product</label>'
+                        +'<label class="product-price">Price</label>'
+                        +'<label class="product-quantity">Quantity</label>'
+                        +'<label class="product-removal">Remove</label>'
+                        +'<label class="product-line-price">Total</label>';
+
+            billing += '<div class="totals-item totals-item-total">'
+                          +'<label>Grand Total</label>'
+                          +'<div class="totals-value csprice" id="cart-total"></div>'
+                      +'</div>'
+                      +'<button class="checkout">Checkout</button>';
+
+            $('#column-labels').append(menuItems);
+            $('#bookedCourses').append(cartItems);
+            $('#totalBilling').append(billing);
+        }else{
+
         }
-
-        $.each(addCoureses, function (key, value) {
-            console.log("<li>Id:" + value.scheduleId + " price:" + value.price + " description:" + value.cdesc +"</li>");
-
-            //var price = "<span>" + value.price + "</span>";
-            //$('.csprice').append(price);
-
-            htmlText += '<div class="product">'
-                        +'<div class="product-image">'
-                        	+ '<img class="w-100" src="assets/img/1.jpg" alt="Image Description">'
-                        + '</div>'
-                        + '<div class="product-details">'
-                        	+ '<div class="product-title">'
-                          +'<p style="margin-bottom: 0;">Course name from API</p>'
-                          +'<p>'+ value.scheduleId +'</p>'
-                          +'</div>'
-                        	+ '<p class="product-description" style="font-size:12px;">' + value.cdesc + '</p>'
-                        + '</div>'
-                        + '<div class="product-price">' + value.price + '</div>'
-                        + '<div class="product-quantity">'
-                        	+ '<input type="number" value="1" min="1">'
-                        + '</div>'
-                        + '<div class="product-removal">'
-                        	+ '<button class="remove-product">Remove</button>'
-                        + '</div>'
-                        + '<div class="product-line-price">' + value.price + '</div>'
-                        + '</div>';
-
-        });
-
-        $('#bookedCourses').append(htmlText);
     }
     /**
      * Brings the all cart cooke data in a array
@@ -195,6 +201,43 @@ $(document).ready(function(){
         //    var back2orig = JSON.parse($.cookie('data'));
         var back2orig = JSON.parse($.cookie('cart'));
         return back2orig;
+    }
+
+    $('.product-removal #remove-product').click( function() {
+      removeItem(this);
+    });
+
+    function getTotal(){
+        var total = 0;
+        $('.product-cost').each(function(){
+          var pprice = $(this).text();
+            total += parseFloat(pprice)
+            //alert(tt);
+        });
+        $('#cart-total').append(total);
+    }
+
+    getTotal();
+
+
+    /**
+    * Removes the cookie data
+    * @param {type} data
+    * @returns {undefined}
+    */
+    function removeCookieData(data)
+    {
+      var addCoureses = "";
+      if (typeof $.cookie('cart') !== 'undefined') {
+          addCoureses = getCookieData();
+      }
+      var newArray = [];
+      $.each(addCoureses, function (key, value) {
+          if (value.scheduleId !== data.scheduleId)
+              newArray.push(value);
+      });
+      var modifiedData = JSON.stringify(newArray);
+      $.cookie("cart", modifiedData);
     }
 
 
@@ -223,11 +266,6 @@ var fadeTime = 300;
 $('.product-quantity input').change( function() {
   updateQuantity(this);
 });
-
-$('.product-removal button').click( function() {
-  removeItem(this);
-});
-
 
 /* Recalculate cart */
 function recalculateCart()
