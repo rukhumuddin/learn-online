@@ -42,6 +42,7 @@
             <div class="cart-heading cf">
               <h1>My Cart</h1>
               <a href="#" class="continue">Continue Shopping</a>
+              <button class="btn btn-clear-items" style="float:right;">Clear Cart</button>
             </div>
           </div>
           <div class="shopping-cart"  style="min-height:100vh;">
@@ -133,6 +134,7 @@
 
 <script>
 $(document).ready(function(){
+    $(".cart-heading .btn-clear-items").hide();
     cartData();
 
     function cartData(){
@@ -145,6 +147,7 @@ $(document).ready(function(){
         if (!!$.cookie('cart')) {
             addCoureses = getCookieData();
             $("#empty-cart").hide();
+            $(".cart-heading .btn-clear-items").show();
 
             $.each(addCoureses, function (key, value) {
                 console.log("<li>course name:" + value.csname + " Id:" + value.scheduleDated + " price:" + value.price + " description:" + value.cdesc +"</li>");
@@ -203,8 +206,10 @@ $(document).ready(function(){
         return back2orig;
     }
 
-    $('.product-removal #remove-product').click( function() {
-      removeItem(this);
+    $('.cart-heading .btn-clear-items').click( function() {
+      $.cookie("cart", null);
+      $.removeCookie("cart");
+      location.reload();
     });
 
     function getTotal(){
