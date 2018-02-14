@@ -76,21 +76,16 @@
       <div class="col-lg-8 col-md-6 col-sm-12">
         <section id="contact">
           <div class=" contact-page-form">
-            <form name="htmlform" id="contactForm" method="post" action="toyousender.php">
-              <input type="text" name="fullname" placeholder="NAME">
-              <input  type="email" name="email" placeholder="MAIL">
-              <input  type="text" name="phone" placeholder="Phone number">
-              <input list="browsers" name="course" placeholder="Courses"/>
+            <form name="htmlform" id="contactForm" method="post" action="">
+              <input type="text" name="fullname" id="fullname" placeholder="NAME">
+              <input  type="email" name="email" id="email" placeholder="MAIL">
+              <input  type="text" name="phone" id="phone" placeholder="Phone number">
+              <input list="browsers" name="course" id="course" placeholder="Courses"/>
               <datalist id="browsers">
-                <option value="Academic Courses">
-                <option value="Commercial Short Courses">
-                <option value="Offshore Courses">
-                <option value="GTSS Courses">
-                <option value="Irish Naval Service Enquiry">
-                <option value="Functions and Conferences">
+                   
               </datalist>
-              <textarea name="comments" placeholder="MESSAGE" required ></textarea>
-              <button name="send" type="submit" class="submit">SEND</button>
+              <textarea name="comments" id="comments" placeholder="MESSAGE" required ></textarea>
+              <button name="send"   type="button" class="submit" id="contactButton">SEND</button>
             </form>
           </div>
         </section>
@@ -225,6 +220,12 @@ $(document).ready(function(){
 		$('html, body').animate({scrollTop : 0},800);
 		return false;
 	});
+        
+        //get the course list
+        ContactCoursesList()
+        $("#contactButton").click(function(){
+            sendContactFormData();
+        });
 
 });
 </script>
