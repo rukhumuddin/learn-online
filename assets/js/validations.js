@@ -43,4 +43,48 @@ $(document).ready(function(){
             $('div.form-error').remove();
         }
     });
+    $("#enquiryForm").validate({
+          rules: {
+              fullname: {required: true
+              },
+              phone: {required: true
+              },
+              email: {required: true,
+                  email: true
+              },
+              subject: {required: true
+              },
+              message: {required: true
+              }
+
+          },
+          messages: {
+              fullname: {required: "Please Enter Fullname"
+              },
+              phone: {required: "Please Enter Phone Number"
+              },
+              email: {required: "Please Enter Email ID",
+                  email: "Enter valid Email ID"
+              },
+              subject: {required: "Please Enter Subject"
+              },
+              message: {required: "Please Enter Message"
+              }
+          },
+          submitHandler: function (form) {
+              form.submit();
+          },
+          errorElement: 'div',
+          errorPlacement: function (error, element) {
+              var placement = $(element).data('error');
+              if (placement) {
+                  $(placement).append(error)
+              } else {
+                  error.insertAfter(element);
+              }
+          },
+          invalidHandler: function (form, validation) {
+              $('div.form-error').remove();
+          }
+    });
 });

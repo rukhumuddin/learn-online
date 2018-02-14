@@ -474,3 +474,18 @@
 .error-message-block h1{
   font-size: 150px;
 }
+.modalSuccessMsg h4{
+  font-weight: 500;
+  color: #737070;
+}
+.modalSuccessMsg{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #10bd2e;
+}
+.modal-body #statusMsg{
+  font-weight: 500;
+  color: #10bd2e;
+  text-align: center;
+}

@@ -109,12 +109,20 @@ function ContactCoursesList() {
 
 }
 
+$('#statusModal').on('hidden.bs.modal', function () {
+    $(".modalSuccessMsg").remove();
+    $(".modalErrorMsg").remove();
+})
+
+
 /**
  * To send the contact form data
  * @returns {undefined}
  */
 function sendContactFormData()
 {
+    var sMsg = "";
+    var fMsg = "";
     $.ajax({
         type: "POST",
         url: globalAPIUrl + "Nmcisweb/WebEnquiry",
@@ -131,9 +139,51 @@ function sendContactFormData()
         }),
         success: function (response) {
             console.log(response);
+            $('.contactInputs').val('');
+            $('#statusModal').modal('show');
+            sMsg += '<h4 class="modalSuccessMsg">Success! We will contact you soon</h4>';
+            $('#statusModal .modal-body').append(sMsg);
         },
         error: function (response) {
             console.log(response);
+            $('#statusModal').modal('show');
+            fMsg += '<h4 class="modalErrorMsg">Waring! failed to receive you details</h4>';
+            $('#statusModal .modal-body').append(fMsg);
+        }
+    });
+}
+/**
+ * To send the contact form data
+ * @returns {undefined}
+ */
+function sendEquiryFormData(scheduleId, courseId)
+{
+    var sMsg = "";
+    var fMsg = "";
+    $.ajax({
+        type: "POST",
+        url: globalAPIUrl + "Nmcisweb/WebEnquiry",
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify({
+            Name:$("#fullname").val(),
+            Phone:$("#phone").val(),
+            Email:$("#email").val(),
+            Message:$("#comments").val(),
+            ScheduleId:scheduleId,
+            CourseId : courseId
+
+        }),
+        success: function (response) {
+            console.log(response);
+            $('.enquiryInputs').val('');
+            sMsg += '<span class="modalSuccessMsg">Success! We will contact you soon</span>';
+            $('#enquirypopup #statusMsg').append(sMsg);
+        },
+        error: function (response) {
+            console.log(response);
+            fMsg += '<span class="modalErrorMsg">Waring! failed to receive you details</span>';
+            $('#enquirypopup #statusMsg').append(fMsg);
         }
     });
 }
@@ -174,14 +224,14 @@ function courseDetails() {
                     + '<td id="newdate" class="course-dated" data-dated="' + value.schID + '">' + value.dated + '</td>'
                     + '<td>' + value.places + '</td>'
                     + '<td class="course-price">' + value.price + '</td>'
-                    + '<td class="booking"><a href="javascript:void(0)" class="enquiryBtn" data-toggle="modal" data-target="#enquirypopup">Enquiry</a><a href="javascript:void(0)" class="book-course">Book</a></td>'
+                    + '<td class="booking"><a id="enquiryFormAction" href="javascript:void(0)" class="enquiryBtn">Enquiry</a><a href="javascript:void(0)" class="book-course">Book</a></td>'
                     + '<tr>';
         });
         $('#course-data #schedules-data').append(schedulesData);
         // change button based on canBook status
         $(".enquiryBtn").hide();
         $(".book-course").hide();
-        if (canBook == true) {
+        if (canBook == false) {
             $(".enquiryBtn").hide();
             $(".book-course").show();
         } else {
@@ -267,4 +317,3 @@ function categortyCourses() {
         $('#courses-layout').append(coursesLayout);
     });
 }
-
