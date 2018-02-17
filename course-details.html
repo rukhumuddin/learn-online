@@ -88,8 +88,8 @@
           <div class=" col-lg-6 " >
             <div class="LNG-pdf-downlod">
               <h3>Download PDF</h3>
-              <div class="download-PDF"><a href="#"><img src="http://navcomelectronics.eu/NMCIS/assets/img/pdf-download.png"><span>Download Course As PDF</span></a></div>
-              <div class="download-brochure"><a href="#"><img src="http://navcomelectronics.eu/NMCIS/assets/img/pdf-download.png"><span>Download Course Brochure</span></a></div>
+              <div class="download-PDF"><a href="#"><img src="assets/images/pdf-download.png"><span>Download Course As PDF</span></a></div>
+              <div class="download-brochure"><a href="#"><img src="assets/images/pdf-download.png"><span>Download Course Brochure</span></a></div>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -130,7 +130,7 @@
       </div>
       <div class="modal-body">
         <h4 id="statusMsg"></h4>
-        <form name="htmlform" id="enquiryForm ">
+        <form name="htmlform" id="enquiryForm">
           <div class="form-group">
             <input type="text" class="form-control enquiryInputs" name="fullname" id="fullname" placeholder="Fullname">
           </div>
@@ -140,9 +140,9 @@
           <div class="form-group">
             <input type="text" class="form-control enquiryInputs" name="phone" id="phone" placeholder="Phone Number">
           </div>
-          <div class="form-group">
+<!--          <div class="form-group">
             <input type="text" class="form-control enquiryInputs" name="subject" id="subject" placeholder="Subject">
-          </div>
+          </div>-->
           <div class="form-group">
             <textarea class="form-control enquiryInputs" name="message" id="message" placeholder="Message"></textarea>
           </div>
@@ -394,10 +394,16 @@ $('body').on('click', '#enquiryFormAction', function () {
   if(scheduleId){
     $('#enquirypopup').modal('show');
     $("#enquiryButton").click(function(){
-        sendEquiryFormData(scheduleId, courseId)
+        var status=  $("#enquiryForm").valid();
+           console.log(status);
+           if (status === true){
+                sendEquiryFormData(scheduleId, courseId);
+           }
+       
     });
   }
 });
+ 
 });
 </script>
 </body>

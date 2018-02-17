@@ -129,12 +129,12 @@ function sendContactFormData()
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify({
-            Name:$("#fullname").val(),
-            Phone:$("#phone").val(),
-            Email:$("#email").val(),
-            Message:$("#comments").val(),
-            ScheduleId:"0",
-            CourseId:$("#course").val()
+            Name: $("#fullname").val(),
+            Phone: $("#phone").val(),
+            Email: $("#email").val(),
+            Message: $("#comments").val(),
+            ScheduleId: "0",
+            CourseId: $("#course").val()
 
         }),
         success: function (response) {
@@ -152,6 +152,7 @@ function sendContactFormData()
         }
     });
 }
+
 /**
  * To send the contact form data
  * @returns {undefined}
@@ -166,12 +167,12 @@ function sendEquiryFormData(scheduleId, courseId)
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify({
-            Name:$("#fullname").val(),
-            Phone:$("#phone").val(),
-            Email:$("#email").val(),
-            Message:$("#comments").val(),
-            ScheduleId:scheduleId,
-            CourseId : courseId
+            Name: $("#fullname").val(),
+            Phone: $("#phone").val(),
+            Email: $("#email").val(),
+            Message: $("#comments").val(),
+            ScheduleId: scheduleId,
+            CourseId: courseId
 
         }),
         success: function (response) {
@@ -231,7 +232,7 @@ function courseDetails() {
         // change button based on canBook status
         $(".enquiryBtn").hide();
         $(".book-course").hide();
-        if (canBook == false) {
+        if (canBook == true) {
             $(".enquiryBtn").hide();
             $(".book-course").show();
         } else {
@@ -286,7 +287,7 @@ function categortyCourses() {
     var url = baseurl.replace(/\?.*$/, "") + "?" + jQuery.param(data);
 
     $.getJSON(globalAPIUrl + url, function (data) {
-        console.log(data);
+        //console.log(data);
         var strg = data.categoryInfo.description;
         var smallDesc = strg.split(".")[0];
         ccImgContainer += '<h3 class="h1 g-font-weight-600 text-uppercase mb-2">' + data.categoryInfo.name + '</h3>'
@@ -296,7 +297,14 @@ function categortyCourses() {
         ccHeadingBlock += '<h1>' + data.categoryInfo.name + '</h1>'
                 + '<p>' + data.categoryInfo.description + '</p>';
         $('#layout-contant').append(ccHeadingBlock);
+        //console.log(data.courses.length);
+        $("#courses-layout-top").hide();
+        if (typeof data.courses.length !== 'undefined') {
+            // the variable is defined
 
+            $("#courses-layout-top").show();
+
+        }
         $.each(data.courses, function (key, value) {
 
             coursesLayout += '<div class="col-lg-4 col-md-6 col-sm-12 g-mb-30">'
@@ -315,5 +323,6 @@ function categortyCourses() {
                     + '</div>';
         });
         $('#courses-layout').append(coursesLayout);
+
     });
 }

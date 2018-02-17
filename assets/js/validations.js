@@ -27,9 +27,7 @@ $(document).ready(function(){
             comments: {required: "Please Enter Message"
             }
         },
-        submitHandler: function (form) {
-            form.submit();
-        },
+ 
         errorElement: 'div',
         errorPlacement: function (error, element) {
             var placement = $(element).data('error');
@@ -52,8 +50,7 @@ $(document).ready(function(){
               email: {required: true,
                   email: true
               },
-              subject: {required: true
-              },
+              
               message: {required: true
               }
 
@@ -66,14 +63,11 @@ $(document).ready(function(){
               email: {required: "Please Enter Email ID",
                   email: "Enter valid Email ID"
               },
-              subject: {required: "Please Enter Subject"
-              },
+ 
               message: {required: "Please Enter Message"
               }
           },
-          submitHandler: function (form) {
-              form.submit();
-          },
+ 
           errorElement: 'div',
           errorPlacement: function (error, element) {
               var placement = $(element).data('error');

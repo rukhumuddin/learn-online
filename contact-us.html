@@ -237,9 +237,15 @@ $(document).ready(function(){
         //get the course list
         ContactCoursesList()
         $("#contactButton").click(function(){
-            sendContactFormData();
+            
+           var status=  $("#contactForm").valid();
+           console.log(status);
+           if (status === true){
+               sendContactFormData();
+           }
+             
         });
-
+       
 });
 </script>
 </body>
