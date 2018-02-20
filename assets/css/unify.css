@@ -1857,9 +1857,9 @@ figure {
 @media (max-width: 991px) {
   .u-triangle-none--md::before,
   .u-semicircle-none--md::before {
-    display: none; } 
+    display: none; }
   .main-menu-list{border-bottom:1px solid #027dab;}
-	
+
 	}
 
 @media (min-width: 992px) {
@@ -35329,7 +35329,7 @@ text-transform:none;
     color: #018abd!important;
 }
 #mega-menu-others{
- color: #fff;   
+ color: #fff;
 }
 
 .hs-mega-menu{margin-top: 7px!important;}
@@ -35348,7 +35348,7 @@ background-color:#018abd;
 color:#fff;
 }
 .draggable{
-height:625px!important;
+height:315px;
 }
 .g-max-width-600 p{
     font-size: 1.5rem!important;
@@ -35367,7 +35367,7 @@ color:#fff;
 .u-header__section--light .hamburger-inner, .u-header__section--light .hamburger-inner::after, .u-header__section--light .hamburger-inner::before{background-color:#fff;}
 .col-XS-12{
     width:100%!important;
-	}	
+	}
 .nav-btn{
     margin: -35px 34px;
 }
@@ -35390,7 +35390,7 @@ color:#fff;
 .search{
 text-align:center;
     margin-top: 15%;
-}	
+}
 .searchButton,.searchTerm{
     padding: 13px 20px 13px 20px;
 	border: 3px solid #009cda;
@@ -35420,7 +35420,7 @@ border-radius: 3px;
   font-size: 12px;
   font-weight: 200;
   background-color: #018abd;
-    
+
   top: 0px;
      margin-top: -30px;
     margin-bottom: -25px;
@@ -35444,7 +35444,7 @@ border-radius: 3px;
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
-  /*    
+  /*
     .collapsed{
        .arrow:before{
                  font-family: FontAwesome;
@@ -35550,7 +35550,7 @@ border-radius: 3px;
     padding-left: 20px;
     line-height: 50px !important;
   }
-  
+
   .content{padding:0px 15px 0px 15px!important;}
   .scrollToTop {right:0px!important;}
   .g-bg-secondary{margin:-10% 0% -17% 0%;}
@@ -35616,15 +35616,15 @@ ul li {list-style:none;}
 .course-full-description ul li span{    margin: 0px 10px 0px -27px;}
 .menu-dropdown-color ul li a{color:#333333!important;}
 .active {background-color: #fff;
-   
+
     border-left: 1px solid rgba(1, 138, 189, 0.46);
     border-right: 1px solid rgba(1, 138, 189, 0.46);
-	
+
 	}
 
 .nav-menu li a:active{
 	color:#018abd!important;
-}	
+}
 .active1{color:#018abd!important;}
 .sub-menu-buttom{margin-top:20px;}
 .menu-dropdown-color h3{padding: 25px 25px 20px;}
@@ -35695,21 +35695,21 @@ ul.actions > li:last-child {
 }
 .blog-search{
     background-color: #f7f7f7;
-    padding: 6% 6% 6% 6%;  
+    padding: 6% 6% 6% 6%;
     margin-top: 5%;
 }
 .latest ul{padding: 5px 5px 5px 5px;background-color: #eee;}
 .latest ul li {background-color: #f7f7f7;border-bottom: 1px solid #eaeaea;}
 .latest ul li a img{margin-right: 10px;}
-.latest h5{ 
+.latest h5{
     background-color: #018abd;
     color: #fff;
     padding: 5px 5px 5px 10px;
     margin-top: 10%;
 }
 
-.holder { 
-  
+.holder {
+
   width:100%;
   height:250px;
   overflow:hidden;
@@ -35832,7 +35832,7 @@ ul.actions > li:last-child {
 #contact .contact-page-form form .required {
 	color:#b43838;}
 #contact{margin-top:3%;margin-bottom:3%;}
-   
+
 .contact-page-form form button{ width: 50%!important;padding: 20px 0px 35px 0px!important;}
 .contact-details { background-color: #f7f7f7;
     margin-top: 6%;
@@ -35849,7 +35849,7 @@ ul.actions > li:last-child {
 .contact-details h3{    color: #018abd;
     margin: 10px 5px 15px 5px;
     border-bottom: 2px solid #eee;
-    padding-bottom: 10px;}	
+    padding-bottom: 10px;}
 /*google-Map-css*/
 .map-responsive iframe{
  width:100%;}
@@ -35857,10 +35857,10 @@ ul.actions > li:last-child {
 
 
 .scrollToTop{
-	width:100px; 
+	width:100px;
 	height:130px;
-	padding:10px; 
-	text-align:center; 
+	padding:10px;
+	text-align:center;
 	/*background: whiteSmoke;*/
 	font-weight: bold;
 	color: #444;
@@ -35869,7 +35869,7 @@ ul.actions > li:last-child {
 	top:84.5%;
 	right:40px;
 	display:none;
-	
+
 }
 .scrollToTop:hover{
 	text-decoration:none;
@@ -35899,4 +35899,3 @@ ul.actions > li:last-child {
 .pagination a:hover:not(.active) {background-color: #ddd;}
 .gallery-grid-sidebar {background-color:#F7F7F7;border:1px solid #eee;padding: 3px 0px 18px 10px;}
 .gallery-grid-sidebar ul{margin: 8% 0% 0px 8%;}
-	

@@ -1,7 +1,83 @@
 /* Add here all your css styles (customizations) */
 /* Global settings */
+.no-padding{
+  padding: 0 !important;
+}
 
+/** navbar styles **/
+.nav-menu .nav-link{
+  color: #fff;
+}
+.nav-main-menu .dropdown-menu{
+  left:auto;
+}
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
 
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.dropdown-menu li{
+  padding: 8px 15px;
+}
+.dropdown-menu li a{
+  font-weight: 500;
+  color: #424242;
+}
+.btn-group:hover #dropdown-menu {
+    display: block;
+}
+@media (min-width: 992px){
+  .navbar-nav .dropdown-toggle-split{
+      padding-left: 0 !important;
+  }
+}
+.navbar-nav #dropdown-menu{
+  min-width: 150%;
+}
+.navbar-nav .dropdown-menu ul li{
+  min-width: 150%;
+}
 /* cart styles */
 #course-cart{
   margin: 0 0 25px 30px;
@@ -488,4 +564,38 @@
   font-weight: 500;
   color: #10bd2e;
   text-align: center;
+}
+@media (min-width: 980px){
+  .sdate {
+      width: 600px;
+  }
+}
+#loginModal img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 576px){
+  #loginModal .modal-dialog {
+      max-width: 400px;
+      margin: 30px auto;
+  }
+}
+#loginModal .form-control{
+  height: 38px;
+  background-color: #e0e0e0;
+}
+/** course details styles**/
+.course-information-page{
+  min-height: 125vh;
+}
+#menu-content a{
+     text-decoration: none;
+     display: block;
+     width: 100%;
+     height: 100%;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+     padding-right: 5px;
 }

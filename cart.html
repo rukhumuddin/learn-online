@@ -68,6 +68,30 @@
 <!--End-Map-->
 <div id="footer"></div>
 </main>
+<!-- Modal Structure -->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="assets/img/logo/logo-1.png" alt="Image Description">
+      </div>
+      <div class="modal-body">
+        <form id="userLoginForm">
+          <div class="form-group">
+            <input type="text" class="form-control" id="usr" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="pwd" placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">LOGIN</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <!-- JS Global Compulsory -->
 <script src="assets/vendor/jquery/jquery.min.js"></script>
 <script src="assets/vendor/tether.min.js"></script>
@@ -138,6 +162,7 @@ $(document).ready(function(){
     cartData();
 
     function cartData(){
+
         //cartdata
         var addCoureses = "";
 		    var cartItems = '';
@@ -146,11 +171,12 @@ $(document).ready(function(){
 
         if (!!$.cookie('cart')) {
             addCoureses = getCookieData();
+            //console.log(addCoureses);
             $("#empty-cart").hide();
             $(".cart-heading .btn-clear-items").show();
 
             $.each(addCoureses, function (key, value) {
-                console.log("<li>course name:" + value.csname + " Id:" + value.scheduleDated + " price:" + value.price + " description:" + value.cdesc +"</li>");
+                //console.log("<li>course name:" + value.csname + " Id:" + value.scheduleDated + " price:" + value.price + " category:" + value.catname +"</li>");
                 //var price = "<span>" + value.price + "</span>";
                 //$('.csprice').append(price);
                 cartItems += '<div class="product">'
@@ -159,8 +185,8 @@ $(document).ready(function(){
                             + '</div>'
                             + '<div class="product-details">'
                             	+'<div class="product-title">'
-                                +'<p style="margin-bottom: 0;" data-cid="'+ value.cid +'">'+ value.csname +'</p>'
-                                +'<p data-scheduleId="'+ value.scheduleId +'" >'+ value.scheduleDated +'</p>'
+                                +'<p style="margin-bottom: 0;" data-cid="'+ value.cid +'">'+ value.csname + '</p>'
+                                +'<p class="sdate">'+ value.scheduleDated +'</p>'
                               +'</div>'
                             	+ '<p class="product-description" style="font-size:12px;"></p>'
                             + '</div>'
@@ -169,7 +195,7 @@ $(document).ready(function(){
                             	+ '<input type="number" value="1" min="1">'
                             + '</div>'
                             + '<div class="product-removal">'
-                            	+ '<button class="remove-product" id="remove-product">Remove</button>'
+                            	+ '<button class="remove-product" data-sid="'+ value.scheduleId +'" id="remove-product">Remove</button>'
                             + '</div>'
                             + '<div class="product-line-price product-cost">' + value.cprice + '</div>'
                             + '</div>';
@@ -206,12 +232,21 @@ $(document).ready(function(){
         return back2orig;
     }
 
+    /** cleck event for clear cart button **/
     $('.cart-heading .btn-clear-items').click( function() {
+      clearCart();
+    });
+
+    /** clear all items in cart **/
+
+    function clearCart(){
       $.cookie("cart", null);
       $.removeCookie("cart");
       location.reload();
-    });
+    }
 
+
+    /** get grand total for items in cart **/
     function getTotal(){
         var total = 0;
         $('.product-cost').each(function(){
@@ -224,6 +259,18 @@ $(document).ready(function(){
 
     getTotal();
 
+    /** Click event to remove item from cart **/
+    $('body').on('click', 'button.remove-product', function () {
+      var data = $(this).data("sid");
+      removeCookieData(data);
+      removeItem(this);
+      addCoureses = getCookieData();
+      /** check for cookie length and clear cookie data array **/
+      if(addCoureses.length  === 0){
+        clearCart();
+        location.reload();
+      }
+    });
 
     /**
     * Removes the cookie data
@@ -236,14 +283,28 @@ $(document).ready(function(){
       if (typeof $.cookie('cart') !== 'undefined') {
           addCoureses = getCookieData();
       }
-      var newArray = [];
-      $.each(addCoureses, function (key, value) {
-          if (value.scheduleId !== data.scheduleId)
-              newArray.push(value);
+      //console.log(addCoureses); // fist added cookies data
+      var newArray = $.grep(addCoureses, function(e){
+           return e.scheduleId != data;
       });
+      console.log(newArray); // modified cookies data
       var modifiedData = JSON.stringify(newArray);
       $.cookie("cart", modifiedData);
+      //location.reload();
     }
+
+    function getUserCookieData() {
+        //    var back2orig = JSON.parse($.cookie('data'));
+        var userInfo = JSON.parse($.cookie('userinfo'));
+        return userInfo;
+    }
+
+    /** checkout click event **/
+    $('body').on('click', '#totalBilling .checkout', function () {
+      //addCoureses = getCookieData();
+      //console.log(addCoureses);
+      //$('#loginModal').modal('show');
+    });
 
 
 	//Check to see if the window is top if not then display button
@@ -262,77 +323,77 @@ $(document).ready(function(){
 	});
 
   /* Set rates + misc */
-var taxRate = 0.00;
-var shippingRate = 0.00;
-var fadeTime = 300;
+  var taxRate = 0.00;
+  var shippingRate = 0.00;
+  var fadeTime = 300;
 
 
-/* Assign actions */
-$('.product-quantity input').change( function() {
-  updateQuantity(this);
-});
-
-/* Recalculate cart */
-function recalculateCart()
-{
-  var subtotal = 0;
-
-  /* Sum up row totals */
-  $('.product').each(function () {
-    subtotal += parseFloat($(this).children('.product-line-price').text());
+  /* Assign actions */
+  $('.product-quantity input').change( function() {
+    updateQuantity(this);
   });
 
-  /* Calculate totals */
-  var tax = subtotal * taxRate;
-  var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal + tax + shipping;
+  /* Recalculate cart */
+  function recalculateCart()
+  {
+    var subtotal = 0;
 
-  /* Update totals display */
-  $('.totals-value').fadeOut(fadeTime, function() {
-    $('#cart-subtotal').html(subtotal.toFixed(2));
-    $('#cart-tax').html(tax.toFixed(2));
-    $('#cart-shipping').html(shipping.toFixed(2));
-    $('#cart-total').html(total.toFixed(2));
-    if(total == 0){
-      $('.checkout').fadeOut(fadeTime);
-    }else{
-      $('.checkout').fadeIn(fadeTime);
-    }
-    $('.totals-value').fadeIn(fadeTime);
-  });
-}
-
-
-/* Update quantity */
-function updateQuantity(quantityInput)
-{
-  /* Calculate line price */
-  var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.product-price').text());
-  var quantity = $(quantityInput).val();
-  var linePrice = price * quantity;
-
-  /* Update line price display and recalc cart totals */
-  productRow.children('.product-line-price').each(function () {
-    $(this).fadeOut(fadeTime, function() {
-      $(this).text(linePrice.toFixed(2));
-      recalculateCart();
-      $(this).fadeIn(fadeTime);
+    /* Sum up row totals */
+    $('.product').each(function () {
+      subtotal += parseFloat($(this).children('.product-line-price').text());
     });
-  });
-}
+
+    /* Calculate totals */
+    var tax = subtotal * taxRate;
+    var shipping = (subtotal > 0 ? shippingRate : 0);
+    var total = subtotal + tax + shipping;
+
+    /* Update totals display */
+    $('.totals-value').fadeOut(fadeTime, function() {
+      $('#cart-subtotal').html(subtotal.toFixed(2));
+      $('#cart-tax').html(tax.toFixed(2));
+      $('#cart-shipping').html(shipping.toFixed(2));
+      $('#cart-total').html(total.toFixed(2));
+      if(total == 0){
+        $('.checkout').fadeOut(fadeTime);
+      }else{
+        $('.checkout').fadeIn(fadeTime);
+      }
+      $('.totals-value').fadeIn(fadeTime);
+    });
+  }
 
 
-/* Remove item from cart */
-function removeItem(removeButton)
-{
-  /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
-    productRow.remove();
-    recalculateCart();
-  });
-}
+  /* Update quantity */
+  function updateQuantity(quantityInput)
+  {
+    /* Calculate line price */
+    var productRow = $(quantityInput).parent().parent();
+    var price = parseFloat(productRow.children('.product-price').text());
+    var quantity = $(quantityInput).val();
+    var linePrice = price * quantity;
+
+    /* Update line price display and recalc cart totals */
+    productRow.children('.product-line-price').each(function () {
+      $(this).fadeOut(fadeTime, function() {
+        $(this).text(linePrice.toFixed(2));
+        recalculateCart();
+        $(this).fadeIn(fadeTime);
+      });
+    });
+  }
+
+
+  /* Remove item from cart */
+  function removeItem(removeButton)
+  {
+    /* Remove row from DOM and recalc cart total */
+    var productRow = $(removeButton).parent().parent();
+    productRow.slideUp(fadeTime, function() {
+      productRow.remove();
+      recalculateCart();
+    });
+  }
 
 });
 </script>

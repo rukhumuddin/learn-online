@@ -89,6 +89,29 @@ function comCourses() {
 
 }
 
+// function to get commercial courses list
+comCoursesHeader();
+function comCoursesHeader() {
+    var coursecCategoryList = '';
+
+    var url = "Category/GetAll";
+    $.getJSON(globalAPIUrl + url, function (data) {
+        //console.log(data);
+        $.each(data, function (key, value) {
+            console.log(value.categoryName);
+            //to access value
+            cstatus = value.status;
+            coursecCategoryList += '<li><a class="category-url" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a></li>';
+
+        });
+        if (cstatus == 'Active') {
+            $('#dropdown-menu').append(coursecCategoryList);
+        }
+
+    });
+
+}
+
 //Contact us Page
 // function to get commercial courses list
 function ContactCoursesList() {
@@ -249,7 +272,7 @@ function courseDetails() {
         $('#course-details #menu-content').append(courseList);
         //to access value
         console.log(data.courseDetails.courseId);
-        courseIntro += '<h3>Course Name:</h3>'
+        courseIntro += '<h3 class="course-mainHeading" data-catname="' + data.categoryInfo.name + '">Course Name:</h3>'
                 + '<p class="course-name" data-courseid="' + data.courseDetails.courseId + '" data-csname="' + data.courseDetails.courseName + '">' + data.courseDetails.courseName + '</p>'
                 + '<h3>Course Price:</h3>'
                 + '<p>' + data.courseDetails.price + '</p>'
@@ -291,7 +314,7 @@ function categortyCourses() {
         var strg = data.categoryInfo.description;
         var smallDesc = strg.split(".")[0];
         ccImgContainer += '<h3 class="h1 g-font-weight-600 text-uppercase mb-2">' + data.categoryInfo.name + '</h3>'
-                + '<p class="g-font-weight-300 g-font-size-22 text-uppercase">' + smallDesc + '.</p>';
+                + '<p class="g-font-weight-300 g-font-size-16 text-uppercase">' + smallDesc + '.</p>';
         $('#cc-image-slider').append(ccImgContainer);
 
         ccHeadingBlock += '<h1>' + data.categoryInfo.name + '</h1>'
