@@ -161,14 +161,14 @@ function sendContactFormData()
 
         }),
         success: function (response) {
-            console.log(response);
+            //console.log(response);
             $('.contactInputs').val('');
             $('#statusModal').modal('show');
             sMsg += '<h4 class="modalSuccessMsg">Success! We will contact you soon</h4>';
             $('#statusModal .modal-body').append(sMsg);
         },
         error: function (response) {
-            console.log(response);
+            //console.log(response);
             $('#statusModal').modal('show');
             fMsg += '<h4 class="modalErrorMsg">Waring! failed to receive you details</h4>';
             $('#statusModal .modal-body').append(fMsg);
@@ -199,13 +199,13 @@ function sendEquiryFormData(scheduleId, courseId)
 
         }),
         success: function (response) {
-            console.log(response);
+            //console.log(response);
             $('.enquiryInputs').val('');
             sMsg += '<span class="modalSuccessMsg">Success! We will contact you soon</span>';
             $('#enquirypopup #statusMsg').append(sMsg);
         },
         error: function (response) {
-            console.log(response);
+            //console.log(response);
             fMsg += '<span class="modalErrorMsg">Waring! failed to receive you details</span>';
             $('#enquirypopup #statusMsg').append(fMsg);
         }
@@ -251,6 +251,9 @@ function courseDetails() {
                     + '<td class="booking"><a id="enquiryFormAction" href="javascript:void(0)" class="enquiryBtn">Enquiry</a><a href="javascript:void(0)" class="book-course">Book</a></td>'
                     + '<tr>';
         });
+        if(data.schedules.length < 1){
+          $("#scheduleTable").hide();
+        }
         $('#course-data #schedules-data').append(schedulesData);
         // change button based on canBook status
         $(".enquiryBtn").hide();
@@ -271,7 +274,7 @@ function courseDetails() {
 
         $('#course-details #menu-content').append(courseList);
         //to access value
-        console.log(data.courseDetails.courseId);
+        //console.log(data.courseDetails.courseId);
         courseIntro += '<h3 class="course-mainHeading" data-catname="' + data.categoryInfo.name + '">Course Name:</h3>'
                 + '<p class="course-name" data-courseid="' + data.courseDetails.courseId + '" data-csname="' + data.courseDetails.courseName + '">' + data.courseDetails.courseName + '</p>'
                 + '<h3>Course Price:</h3>'
@@ -324,9 +327,7 @@ function categortyCourses() {
         $("#courses-layout-top").hide();
         if (typeof data.courses.length !== 'undefined') {
             // the variable is defined
-
             $("#courses-layout-top").show();
-
         }
         $.each(data.courses, function (key, value) {
 

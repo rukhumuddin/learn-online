@@ -249,9 +249,14 @@ $(document).ready(function(){
 
   /** contact form select options functionality **/
   $('#coursesListDropdown').hide();
+
   $('#categoryListDropdown').change(function() {
      //alert('Value changed to ' + $(this).val());
-      var catid = $(this).val();
+      var selectcatid = $(this).val();
+
+      if (selectcatid) {
+          //alert('category-courses.html?catId=' + selectcatid);
+      }
 
       if($('#categoryListDropdown').val() !== '') {
           $('#coursesListDropdown').show();

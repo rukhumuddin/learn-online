@@ -617,3 +617,7 @@ header .dropdown-menu li a:hover,header .dropdown-menu li a:focus{
      overflow: hidden;
      padding-right: 5px;
 }
+/** footer styles **/
+.footermail{
+  color: #c9e7f3;
+}
