@@ -168,10 +168,12 @@ $(document).ready(function(){
 		    var cartItems = '';
         var menuItems = '';
         var billing = '';
+        var ctotal = "";
+        var billing = "";
 
         if (!!$.cookie('cart')) {
             addCoureses = getCookieData();
-            //console.log(addCoureses);
+            console.log(addCoureses);
             $("#empty-cart").hide();
             $(".cart-heading .btn-clear-items").show();
 
@@ -179,25 +181,26 @@ $(document).ready(function(){
                 //console.log("<li>course name:" + value.csname + " Id:" + value.scheduleDated + " price:" + value.price + " category:" + value.catname +"</li>");
                 //var price = "<span>" + value.price + "</span>";
                 //$('.csprice').append(price);
+
                 cartItems += '<div class="product">'
                             +'<div class="product-image">'
                             	+'<img class="w-100" src="assets/img/1.jpg" alt="Image Description">'
                             + '</div>'
                             + '<div class="product-details">'
                             	+'<div class="product-title">'
-                                +'<p style="margin-bottom: 0;" data-cid="'+ value.cid +'">'+ value.csname + '</p>'
+                                +'<p class="course-name" style="margin-bottom: 0;" data-cid="'+ value.cid +'">'+ value.csname + '</p>'
                                 +'<p class="sdate">'+ value.scheduleDated +'</p>'
                               +'</div>'
                             	+ '<p class="product-description" style="font-size:12px;"></p>'
                             + '</div>'
-                            + '<div class="product-price">' + value.cprice + '</div>'
+                            + '<div class="product-price course-actual-price">' + value.cprice + '</div>'
                             + '<div class="product-quantity">'
-                            	+ '<input type="number" value="1" min="1">'
+                            	+ '<input class="modifiedQty course-qty" type="number" data-schid="'+ value.scheduleId +'" value="'+ value.qty +'" min="1">'
                             + '</div>'
                             + '<div class="product-removal">'
                             	+ '<button class="remove-product" data-sid="'+ value.scheduleId +'" id="remove-product">Remove</button>'
                             + '</div>'
-                            + '<div class="product-line-price product-cost">' + value.cprice + '</div>'
+                            + '<div class="product-line-price product-cost" data-qtys="'+ value.qty +'" data-aprice="' + value.cprice + '"></div>'
                             + '</div>';
 
             });
@@ -218,9 +221,51 @@ $(document).ready(function(){
             $('#column-labels').append(menuItems);
             $('#bookedCourses').append(cartItems);
             $('#totalBilling').append(billing);
+
         }else{
                 window.location.href = 'index.html';
         }
+    }
+
+   /* price based on quantity to display total price of individual item */
+   totalQtyPrice();
+   function totalQtyPrice(){
+     var ctotal = "";
+     $('.product-cost').each(function(){
+       var pprice = $(this).data("aprice");
+       var pqty = $(this).data("qtys");
+         ctotal = pprice * pqty;
+         //alert(ctotal);
+         $(this).append(ctotal);
+     });
+   }
+
+    /* on change of quantity input value get data and pass it to modifyItem function */
+    $('.product-quantity input').change( function() {
+      var schid = $(this).data("schid");
+      var cqty = $(this).val();
+      modifyItem(schid, cqty);
+      //alert(schid + cqty);
+      updateQuantity(this);
+    });
+
+    /**
+    function to modify cookie with quantity value
+    **/
+    function modifyItem(schid, cqty){
+      var addCoureses = getCookieData();
+      //console.log(addCoureses);
+      $.each(addCoureses, function (key, value) {
+          if (value.scheduleId == schid){
+              value.qty = cqty
+              //alert(value.qty = cqty);
+              //$.cookie('cart', addCoureses);
+              var modifiedData = JSON.stringify(addCoureses);
+              $.cookie("cart", modifiedData);
+              //ny = getCookieData();
+              //console.log(ny); //to check modified cookie 
+          }
+      });
     }
     /**
      * Brings the all cart cooke data in a array
@@ -328,10 +373,6 @@ $(document).ready(function(){
   var fadeTime = 300;
 
 
-  /* Assign actions */
-  $('.product-quantity input').change( function() {
-    updateQuantity(this);
-  });
 
   /* Recalculate cart */
   function recalculateCart()

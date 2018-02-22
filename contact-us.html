@@ -80,10 +80,12 @@
               <input class="contactInputs" type="text" name="fullname" id="fullname" placeholder="NAME">
               <input class="contactInputs" type="email" name="email" id="email" placeholder="MAIL">
               <input class="contactInputs" type="text" name="phone" id="phone" placeholder="Phone number">
-              <input class="contactInputs"  list="browsers" name="course" id="course" placeholder="Courses"/>
-              <datalist id="browsers">
-
-              </datalist>
+              <select class="contactInputs" id="categoryListDropdown" name="category" id="category">
+                <option value="" class="disabled">Course Category</option>
+              </select>
+              <select class="contactInputs" id="coursesListDropdown" name="course" id="course">
+                <option value="" class="disabled">Courses</option>
+              </select>
               <textarea class="contactInputs"  name="comments" id="comments" placeholder="MESSAGE" required ></textarea>
               <button name="send"   type="button" class="submit" id="contactButton">SEND</button>
             </form>
@@ -234,17 +236,29 @@ $(document).ready(function(){
 		return false;
 	});
 
-        //get the course list
-        ContactCoursesList()
-        $("#contactButton").click(function(){
+  //get the course list
+  ContactCoursesList()
+  $("#contactButton").click(function(){
+     var status=  $("#contactForm").valid();
+     console.log(status);
+     if (status === true){
+         sendContactFormData();
+     }
 
-           var status=  $("#contactForm").valid();
-           console.log(status);
-           if (status === true){
-               sendContactFormData();
-           }
+  });
 
-        });
+  /** contact form select options functionality **/
+  $('#coursesListDropdown').hide();
+  $('#categoryListDropdown').change(function() {
+     //alert('Value changed to ' + $(this).val());
+      var catid = $(this).val();
+
+      if($('#categoryListDropdown').val() !== '') {
+          $('#coursesListDropdown').show();
+      } else {
+          $('#coursesListDropdown').hide();
+      }
+  });
 
 });
 </script>

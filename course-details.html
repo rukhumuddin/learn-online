@@ -270,6 +270,7 @@ $(document).ready(function(){
         cid = $("p.course-name").data("courseid");
         cdesc = $(".cdesc").data("cdesc");
         catname = $(".course-mainHeading").data("catname");
+        qty = 1;
         //alert('scheduleId: '+scheduleId+', cprice: ' + cprice+', cdesc: ' + cdesc+', csname: ' + csname+', cid: ' + cid);
 
         course = {
@@ -279,7 +280,8 @@ $(document).ready(function(){
             "cdesc": cdesc,
             "cid": cid,
             "csname": csname,
-            "catname": catname
+            "catname": catname,
+            "qty": qty
         };
 
         insertCookieData(course);
@@ -291,7 +293,7 @@ $(document).ready(function(){
     var courses = [];
     //console.log(courses);
     //inserting
-    var course = {"scheduleId": "", "price": "", "cdesc": ""};
+    var course = {"scheduleId": "", "price": "", "cdesc": "", "qty": 1};
     courses.push(course);
     // insertCookieData(course);
     //delete

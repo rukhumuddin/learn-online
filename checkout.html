@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="font-primary">
+<head>
+<!-- Title -->
+<title>nmci</title>
+<!-- Required Meta Tags Always Come First -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Favicon -->
+<!-- <link rel="shortcut icon" href="../../favicon.ico"> -->
+<!-- Google Fonts -->
+<!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700%7Csubset=cyrillic,latin" rel="stylesheet" type="text/css"> -->
+<!-- CSS Global Compulsory -->
+<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+<!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css">
+<link rel="stylesheet" href="assets/vendor/icon-hs/style.css">
+<link rel="stylesheet" href="assets/vendor/animate.css">
+<link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css">
+<link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="assets/vendor/hs-megamenu/src/hs.megamenu.css">
+<link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
+<!-- Revolution Slider -->
+<link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+<!-- CSS Unify -->
+<link rel="stylesheet" href="assets/css/unify.css">
+<!-- CSS Customization -->
+<link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+<main>
+<div id="header"></div>
+<div id="content-area">
+<!-- section Blocks -->
+
+<!-- End section Blocks -->
+</div>
+<div id="footer"></div>
+</main>
+<!-- JS Global Compulsory -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/tether.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script src="assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+<script src="assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+<script src="assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="assets/vendor/appear.js"></script>
+<!-- JS Revolution Slider -->
+<script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<!-- JS Unify -->
+<script src="assets/js/hs.core.js"></script>
+<script src="assets/js/components/hs.header.js"></script>
+<script src="assets/js/helpers/hs.hamburgers.js"></script>
+<script src="assets/js/components/hs.tabs.js"></script>
+<script src="assets/js/components/hs.popup.js"></script>
+<script src="assets/js/components/hs.carousel.js"></script>
+<script src="assets/js/components/hs.counter.js"></script>
+<script src="assets/js/components/hs.cubeportfolio.js"></script>
+<!-- JS Customization -->
+<script src="assets/js/layout.js"></script>
+<!-- API requests -->
+<script src="assets/js/api.js"></script>
+<!-- JS Plugins Init. -->
+
+<script>
+      ;(function ($) {
+        'use strict';
+        $(document).on('ready', function () {
+          // Header
+          $.HSCore.components.HSHeader.init($('#js-header'));
+          $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+          // Initialization of HSMegaMenu plugin
+          $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 991
+          });
+          $.HSCore.components.HSTabs.init('[data-tabs-mobile-type]');
+
+          $('[data-toggle="tooltip"]').tooltip();
+
+          $.HSCore.components.HSPopup.init('.js-fancybox');
+
+          // initialization of counters
+          var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+          // initialization of carousel
+          $.HSCore.components.HSCarousel.init('.js-carousel');
+
+          $.HSCore.components.HSCubeportfolio.init('.cbp');
+        });
+      })(jQuery);
+    </script>
+<!-- Revolution Slider JS Plugins Init. -->
+<script>
+      var tpj = jQuery;
+
+      var revapi1174;
+      tpj(document).ready(function () {
+        if (tpj("#rev_slider_1174_1").revolution == undefined) {
+          revslider_showDoubleJqueryError("#rev_slider_1174_1");
+        } else {
+          revapi1174 = tpj("#rev_slider_1174_1").show().revolution({
+            sliderType: "hero",
+            jsFileLocation: "assets/vendor/revolution-slider/revolution/js/",
+            sliderLayout: "fullscreen",
+            dottedOverlay: "none",
+            delay: 9000,
+            navigation: {},
+            responsiveLevels: [1240, 1024, 778, 480],
+            visibilityLevels: [1240, 1024, 778, 480],
+            gridwidth: [1240, 1024, 778, 480],
+            gridheight: [868, 768, 960, 720],
+            lazyType: "none",
+            parallax: {
+              type: "scroll",
+              origo: "slidercenter",
+              speed: 400,
+              levels: [10, 15, 20, 25, 30, 35, 40, -10, -15, -20, -25, -30, -35, -40, -45, 55],
+              type: "scroll",
+            },
+            shadow: 0,
+            spinner: "off",
+            autoHeight: "off",
+            fullScreenAutoWidth: "off",
+            fullScreenAlignForce: "off",
+            fullScreenOffsetContainer: "",
+            fullScreenOffset: "60px",
+            disableProgressBar: "on",
+            hideThumbsOnMobile: "off",
+            hideSliderAtLimit: 0,
+            hideCaptionAtLimit: 0,
+            hideAllCaptionAtLilmit: 0,
+            debugMode: false,
+            fallbacks: {
+              simplifyAll: "off",
+              disableFocusListener: false,
+            }
+          });
+        }
+      });
+     </script>
+<script>
+$(document).ready(function(){
+
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+
+  hotcourses();
+
+});
+
+</script>
+</body>
+</html>

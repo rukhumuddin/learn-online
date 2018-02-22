@@ -90,46 +90,46 @@ function comCourses() {
 }
 
 // function to get commercial courses list
-comCoursesHeader();
-function comCoursesHeader() {
+comCoursesListView();
+function comCoursesListView() {
     var coursecCategoryList = '';
+    var footerCatList = '';
 
     var url = "Category/GetAll";
     $.getJSON(globalAPIUrl + url, function (data) {
         //console.log(data);
         $.each(data, function (key, value) {
-            console.log(value.categoryName);
             //to access value
             cstatus = value.status;
             coursecCategoryList += '<li><a class="category-url" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a></li>';
-
+            if(key<5){
+              footerCatList += '<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">'
+                              	+'<h4 class="h6 g-pr-20 mb-0">'
+                              		+'<a class="g-color-white-opacity-0_8 g-color-white--hover category-url" href="#" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a>'
+                              	+'</h4>'
+                               '</li>';
+            }
         });
         if (cstatus == 'Active') {
             $('#dropdown-menu').append(coursecCategoryList);
+            $('#facilities-dropdown-menu').append(coursecCategoryList);
         }
-
+        $('#footerCategoryLinks').append(footerCatList);
     });
-
 }
 
 //Contact us Page
 // function to get commercial courses list
 function ContactCoursesList() {
     var coursecCategory = '';
-
     var url = "Category/GetAll";
     $.getJSON(globalAPIUrl + url, function (data) {
         //console.log(data);
         $.each(data, function (key, value) {
-
-            coursecCategory += '<option value="' + value.categoryName + '">';
-
+            coursecCategory += '<option value="' + value.categoryId + '">' + value.categoryName + '</option>';
         });
-        $('#browsers').append(coursecCategory);
-
-
+        $('#categoryListDropdown').append(coursecCategory);
     });
-
 }
 
 $('#statusModal').on('hidden.bs.modal', function () {
@@ -333,8 +333,6 @@ function categortyCourses() {
             coursesLayout += '<div class="col-lg-4 col-md-6 col-sm-12 g-mb-30">'
                     + '<article class="g-bg-white">'
                     + '<figure class="g-pos-rel"> <img class="img-fluid w-100" src="assets/img/Petrochemical-1.jpg" alt="Image Description">'
-                    + '<figcaption class="g-pos-abs g-bottom-20 g-left-20"> <a class="btn btn-sm u-btn-black rounded-0" href="#"></a> </figcaption>'
-                    + '</figure>'
                     + '<div class="g-pa-30">'
                     + '<h4 class="g-font-weight-300 g-mb-15"> <a class="g-color-main g-text-underline--none--hover course-url" data-catid="' + data.categoryInfo.categoryId + '" data-cid="' + value.courseId + '" href="javascript:void(0)">' + value.name + '</a> </h4>'
                     + '<p>' + value.description + '</p>'

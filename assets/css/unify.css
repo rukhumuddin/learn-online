@@ -35615,11 +35615,8 @@ ul li {list-style:none;}
 .containt-hd ul li span{    margin: 0px 10px 0px -27px;}
 .course-full-description ul li span{    margin: 0px 10px 0px -27px;}
 .menu-dropdown-color ul li a{color:#333333!important;}
-.active {background-color: #fff;
-
-    border-left: 1px solid rgba(1, 138, 189, 0.46);
-    border-right: 1px solid rgba(1, 138, 189, 0.46);
-
+.active {
+  background-color: #fff;
 	}
 
 .nav-menu li a:active{
@@ -35641,7 +35638,7 @@ box-shadow: -1px 11px 9px -6px rgba(0,0,0,0.75);}
 .menu-dropdown-color ul{padding-left:10px;}
 
 
-.navbar-nav > .active a{
+.navbar-nav > .active a.menu-nav-title, .navbar-nav > .active button{
   color: #018abd!important;
 }
 
@@ -35796,7 +35793,25 @@ ul.actions > li:last-child {
 	-moz-transition:all .1s ease-in-out;
 	-ms-transition:all .1s ease-in-out;
 	-o-transition:all .1s ease-in-out;
-	transition:all .1s ease-in-out;}
+	transition:all .1s ease-in-out;
+}
+#contact .contact-page-form form select{
+	width:97.4%;
+	height:30px;
+	padding:5px;
+	font-size: 12px;
+	color:#737070;
+	letter-spacing:1px;
+	background: #FFF;
+	border:2px solid #e8e8e8;
+	margin-bottom:25px;
+  -webkit-transition:all .1s ease-in-out;
+	-moz-transition:all .1s ease-in-out;
+	-ms-transition:all .1s ease-in-out;
+	-o-transition:all .1s ease-in-out;
+	transition:all .1s ease-in-out;
+}
+
 
 #contact .contact-page-form form input:focus,
 #contact .contact-page-form form textarea:focus {
