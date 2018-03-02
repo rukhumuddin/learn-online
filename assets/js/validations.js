@@ -3,7 +3,8 @@ $(document).ready(function(){
         rules: {
             fullname: {required: true
             },
-            phone: {required: true
+            phone: {required: true,
+                number: true
             },
             email: {required: true,
                 email: true
@@ -17,7 +18,8 @@ $(document).ready(function(){
         messages: {
             fullname: {required: "Please Enter Fullname"
             },
-            phone: {required: "Please Enter Phone Number"
+            phone: {required: "Please Enter Phone Number",
+                number: "Please Enter Only Numeric"
             },
             email: {required: "Please Enter Email ID",
                 email: "Enter valid Email ID"
@@ -27,7 +29,7 @@ $(document).ready(function(){
             comments: {required: "Please Enter Message"
             }
         },
- 
+
         errorElement: 'div',
         errorPlacement: function (error, element) {
             var placement = $(element).data('error');
@@ -50,7 +52,7 @@ $(document).ready(function(){
               email: {required: true,
                   email: true
               },
-              
+
               message: {required: true
               }
 
@@ -63,11 +65,11 @@ $(document).ready(function(){
               email: {required: "Please Enter Email ID",
                   email: "Enter valid Email ID"
               },
- 
+
               message: {required: "Please Enter Message"
               }
           },
- 
+
           errorElement: 'div',
           errorPlacement: function (error, element) {
               var placement = $(element).data('error');

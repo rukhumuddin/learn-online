@@ -89,55 +89,6 @@ function comCourses() {
 
 }
 
-// function to get commercial courses list
-comCoursesListView();
-function comCoursesListView() {
-    var coursecCategoryList = '';
-    var footerCatList = '';
-
-    var url = "Category/GetAll";
-    $.getJSON(globalAPIUrl + url, function (data) {
-        //console.log(data);
-        $.each(data, function (key, value) {
-            //to access value
-            cstatus = value.status;
-            coursecCategoryList += '<li><a class="category-url" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a></li>';
-            if(key<5){
-              footerCatList += '<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">'
-                              	+'<h4 class="h6 g-pr-20 mb-0">'
-                              		+'<a class="g-color-white-opacity-0_8 g-color-white--hover category-url" href="#" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a>'
-                              	+'</h4>'
-                               '</li>';
-            }
-        });
-        if (cstatus == 'Active') {
-            $('#dropdown-menu').append(coursecCategoryList);
-            $('#facilities-dropdown-menu').append(coursecCategoryList);
-        }
-        $('#footerCategoryLinks').append(footerCatList);
-    });
-}
-
-//Contact us Page
-// function to get commercial courses list
-function ContactCoursesList() {
-    var coursecCategory = '';
-    var url = "Category/GetAll";
-    $.getJSON(globalAPIUrl + url, function (data) {
-        //console.log(data);
-        $.each(data, function (key, value) {
-            coursecCategory += '<option value="' + value.categoryId + '">' + value.categoryName + '</option>';
-        });
-        $('#categoryListDropdown').append(coursecCategory);
-    });
-}
-
-$('#statusModal').on('hidden.bs.modal', function () {
-    $(".modalSuccessMsg").remove();
-    $(".modalErrorMsg").remove();
-})
-
-
 /**
  * To send the contact form data
  * @returns {undefined}
@@ -239,6 +190,7 @@ function courseDetails() {
     var url = baseurl.replace(/\?.*$/, "") + "?" + jQuery.param(data);
 
     $.getJSON(globalAPIUrl + url, function (data) {
+
         //console.log(data);
         var catgid = data.categoryInfo.categoryId;
         // to get schedules data related to course
@@ -347,4 +299,87 @@ function categortyCourses() {
         $('#courses-layout').append(coursesLayout);
 
     });
+
 }
+
+
+//Contact us Page
+// function to get commercial courses list
+function ContactCoursesList() {
+    var coursecCategory = '';
+    var url = "Category/GetAll";
+    $.getJSON(globalAPIUrl + url, function (data) {
+        //console.log(data);
+        $.each(data, function (key, value) {
+            coursecCategory += '<option value="' + value.categoryId + '">' + value.categoryName + '</option>';
+        });
+        $('#categoryListDropdown').append(coursecCategory);
+    });
+}
+
+$('#statusModal').on('hidden.bs.modal', function () {
+    $(".modalSuccessMsg").remove();
+    $(".modalErrorMsg").remove();
+})
+
+// function to get commercial courses list
+comCoursesListView();
+function comCoursesListView() {
+    var coursecCategoryList = '';
+    var footerCatList = '';
+
+    var url = "Category/GetAll";
+    $.getJSON(globalAPIUrl + url, function (data) {
+        //console.log(data);
+        $.each(data, function (key, value) {
+            //to access value
+            cstatus = value.status;
+            coursecCategoryList += '<li class="dropdown-submenu"><a class="category-url headerMainCatid dropdown-toggle" data-toggle="dropdown" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a><ul class="dropdown-menu" id="dropdown-menu-second-level"></ul></li>';
+            if(key<5){
+              footerCatList += '<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">'
+                              	+'<h4 class="h6 g-pr-20 mb-0">'
+                              		+'<a class="g-color-white-opacity-0_8 g-color-white--hover category-url" href="#" data-catid="' + value.categoryId + '" href="javascript:void(0)">'+ value.categoryName +'</a>'
+                              	+'</h4>'
+                               '</li>';
+            }
+        });
+        if (cstatus == 'Active') {
+            $('#dropdown-menu').append(coursecCategoryList);
+            $('#facilities-dropdown-menu').append(coursecCategoryList);
+        }
+        $('#footerCategoryLinks').append(footerCatList);
+    });
+}
+
+
+
+// function to get courses list after redirected to category courses page
+function dropdownCategortyCourses(selectcatid) {
+
+  var url = "Nmcisweb/GetCategDetails?catId="+selectcatid;
+  if(selectcatid) {
+      $.ajax({
+          url: globalAPIUrl + url,
+          type: "GET",
+          dataType: "json",
+          success:function(data) {
+            console.log(data);
+            if(data.courses == null){
+              $('select[name="course"]').hide();
+            }
+            $('select[name="course"]').empty();
+            $.each(data.courses, function(key, value) {
+                $('select[name="course"]').append('<option value="'+ value.courseId +'">'+ value.name +'</option>');
+            });
+          }
+      });
+  }else{
+      $('select[name="course"]').empty();
+  }
+}
+
+$("a.headerMainCatid").hover( function () {
+  console.log("hello");
+}, function() {
+  alert("And we're out");
+});

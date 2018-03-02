@@ -604,8 +604,11 @@ header .dropdown-menu li a:hover,header .dropdown-menu li a:focus{
   background-color: #e0e0e0;
 }
 /** course details styles**/
-.course-information-page{
-  min-height: 125vh;
+#course-details{
+  margin-bottom: 30px;
+}
+#course-details .menu-list{
+  padding-bottom: 50px;
 }
 #menu-content a{
      text-decoration: none;
